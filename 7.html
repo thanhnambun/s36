@@ -29,23 +29,22 @@
             <td><button>*</button></td>
         </tr>
         <tr>
-            <td><button id="del">AC</button></td>
+            <td><button id="ac">AC</button></td>
             <td colspan="2"><button id="result">=</button></td>
             <td><button>/</button></td>
         </tr>
     </table>    
         <script>
         let input=document.querySelector("input");
-        let btn=document.querySelectorAll("button");
-        let del=document.getElementById("del");
+        let number=document.querySelectorAll("button");
+        let ac=document.getElementById("ac");
         let result=document.getElementById("result");
-        for (let i = 0; i < btn.length; i++) {
-            btn[i].addEventListener("click",function add (event) {
-                // console.log(event.target.innerHTML);
+        for (let i = 0; i < number.length; i++) {
+            number[i].addEventListener("click",function add (event) {
                 input.value=input.value+event.target.innerHTML;
             })
         }
-        del.addEventListener("click",function(){
+        ac.addEventListener("click",function(){
             input.value="";   
         })
         result.addEventListener("click",function(){ 
