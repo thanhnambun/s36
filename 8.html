@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Form Đặt hàng</h2>
+        <div class="form-group">
+            <label for="full-name">Họ và tên:</label>
+            <input type="text" id="full-name" required>
+        </div><br>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div><br>
+        <div class="form-group">
+            <label for="order-date">Ngày đặt:</label>
+            <input type="text" id="order-date" required>
+        </div><br>
+        <div class="form-group">
+            <button onclick="copyRecipientInfo()">Tôi là người nhận</button>
+        </div><br>
+        <div id="recipient-info">
+            <h3>Thông tin người nhận</h3>
+            <div class="form-group">
+                <label for="recipient-name">Họ và tên:</label>
+                <input type="text" id="recipient-name">
+            </div><br>
+            <div class="form-group">
+                <label for="recipient-email">Email:</label>
+                <input type="email" id="recipient-email">
+            </div><br>
+        </div>
+        <div class="form-group">
+            <button onclick="placeOrder()">Đặt hàng</button>
+            <button onclick="resetForm()">Nhập lại</button>
+        </div><br>
+    </div>
+
+    <script>
+        function copyRecipientInfo() {
+            var fullName = document.getElementById('full-name').value.toUpperCase();
+            var recipientNameInput = document.getElementById('recipient-name');
+            var recipientEmailInput = document.getElementById('recipient-email');
+
+            recipientNameInput.value = fullName;
+            recipientEmailInput.value = document.getElementById('email').value;
+
+            document.getElementById('recipient-info').style.display = 'block';
+        }
+
+        function placeOrder() {
+            var email = document.getElementById('email').value;
+            var orderDate = document.getElementById('order-date').value;
+
+            if (emailIsValid(email) && dateIsValid(orderDate)) {
+                var sendEmail = confirm("Gửi mail cho tôi?");
+                if (sendEmail) {
+                    alert("Đặt hàng thành công, email đã gửi tới cho quý khách.");
+                } else {
+                    alert("Đặt hàng thành công.");
+                }
+                resetForm();
+            } else {
+                alert("Vui lòng điền đúng định dạng email và ngày đặt.");
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('full-name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('order-date').value = "";
+            document.getElementById('recipient-name').value = "";
+            document.getElementById('recipient-email').value = "";
+            document.getElementById('recipient-info').style.display = 'none';
+        }
+
+        function emailIsValid(email) {
+            var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return emailRegex.test(email);
+        }
+
+        function dateIsValid(date) {
+            var dateRegex = /^\d{2}-\d{2}-\d{4}$/;
+            return dateRegex.test(date);
+        }
+    </script>
+</body>
+</html>
