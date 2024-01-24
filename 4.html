@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1"><br>
+    <input type="text" id="input2"><br>
+    <input type="text" id="input" readonly><br>
+    <button id="button">click</button>
+    <script>
+        let input1 = document.getElementById("input1")
+        let input2 = document.getElementById("input2")
+        let input = document.getElementById("input")
+        let button = document.getElementById("button")
+        button.addEventListener("click", function() {
+            let a = Number(input1.value)
+            let b = Number(input2.value)
+            let c = a + b 
+            input.value = c
+
+        });
+    </script>
+</body>
+</html>

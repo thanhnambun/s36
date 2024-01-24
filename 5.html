@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Item</label>
+    <input type="text" id="input" >
+    <button id="x">add</button>
+    <div id="a"></div>
+    <script>
+        let input = document.querySelector("input");
+        let button = document.querySelectorAll("#x") ;
+        input.style.backgroundColor= "yellow";
+        input.addEventListener("input" ,function () {
+            if(input !== ""){
+                input.style.backgroundColor = "white"
+            }
+        })
+        x.addEventListener("click",function () {
+            let b =input.value;
+            a.innerHTML= b;
+            input.value="";
+            input.style.backgroundColor= "yellow";
+        })
+    </script>
+</body>
+</html>
